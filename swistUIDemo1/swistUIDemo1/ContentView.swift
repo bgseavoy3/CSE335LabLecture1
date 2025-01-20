@@ -11,56 +11,57 @@ struct ContentView: View {
     @State var fName: String = ""
     @State var lName: String = ""
     @State var greeting: String = ""
+    @State var backgroundColor: Color = Color.white
     var body: some View {
-        
-        Text("Welcome to CSE335!")
-        Spacer()
-        
-        HStack {
-            Text("First Name: ")
+        VStack {
+            Text("Welcome to CSE335!")
             Spacer()
-            Spacer()
-            TextField("please enter your first name here", text: $fName)
-        }
-        HStack {
-            Text("Last Name: ")
-            Spacer()
-            Spacer()
-            TextField("please enter your last name here", text: $lName)
-        }
-        Button("Enter", action: {
-            if(fName != "" && lName != "")
-            {
-                greeting = fName + " " + lName + " Welcome to CSE335"
+            HStack {
+                Text("First Name: ")
+                Spacer()
+                Spacer()
+                TextField("please enter your first name here", text: $fName)
             }
-        })
-        Spacer()
-
-        Text(greeting)
-        Spacer()
-
+            HStack {
+                Text("Last Name: ")
+                Spacer()
+                Spacer()
+                TextField("please enter your last name here", text: $lName)
+            }
+            Button("Enter", action: {
+                if(fName != "" && lName != "")
+                {
+                    greeting = fName + " " + lName + " Welcome to CSE335"
+                }
+            })
+            
+            Text(greeting)
             VStack {
                 if(greeting != "")
                 {
                     Text("Change Background Color")
                     HStack {
                         Button("Green", action: {
-                            .background(Color.green)
+                            backgroundColor = Color.green
                         })
                         Button("Orange", action: {
-                            .background(Color.orange)
+                            backgroundColor = Color.orange
                         })
                         Button("White", action: {
-                            .background(Color.white)
+                            backgroundColor = Color.white
                         })
                     }
                 }
             }
+            Spacer()
+            Text("Made By Braden Seavoy")
         }
-        
+
+        .background(backgroundColor.ignoresSafeArea())
     }
 }
 
 #Preview {
     ContentView()
 }
+

@@ -35,8 +35,28 @@ struct ContentView: View {
             }
         })
         Spacer()
-        
+
         Text(greeting)
+        Spacer()
+
+            VStack {
+                if(greeting != "")
+                {
+                    Text("Change Background Color")
+                    HStack {
+                        Button("Green", action: {
+                            .background(Color.green)
+                        })
+                        Button("Orange", action: {
+                            .background(Color.orange)
+                        })
+                        Button("White", action: {
+                            .background(Color.white)
+                        })
+                    }
+                }
+            }
+        }
         
     }
 }
